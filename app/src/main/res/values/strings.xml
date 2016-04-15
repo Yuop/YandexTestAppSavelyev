@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">YandexTestApp</string>
+    <string name="first_title">Исполнители</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_description">DescriptionActivity</string>
+    <string name="transition_artist">transition</string>
+</resources>

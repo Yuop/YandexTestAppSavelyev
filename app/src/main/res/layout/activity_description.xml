@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.oupsec.savelyevyura.yandextestapp.DescriptionActivity"
+    >
+
+    <ImageView
+        android:transitionName="@string/transition_artist"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:id="@+id/bigCoverImage"
+        android:layout_alignParentTop="false"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="false"
+        android:adjustViewBounds="false"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="genres"
+        android:id="@+id/genresTextView"
+        android:layout_below="@+id/bigCoverImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" x songs     •      x albums"
+        android:id="@+id/countTextView"
+        android:layout_below="@+id/genresTextView"
+        android:layout_alignLeft="@+id/genresTextView"
+        android:layout_alignStart="@+id/genresTextView"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Биография"
+        android:id="@+id/textView"
+        android:layout_below="@+id/countTextView"
+        android:layout_alignLeft="@+id/countTextView"
+        android:layout_alignStart="@+id/countTextView"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"
+        android:layout_marginRight="15dp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:scrollbars="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Description"
+        android:id="@+id/descriptionTextView"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:layout_marginRight="15dp"
+        android:nestedScrollingEnabled="true" />
+</RelativeLayout>
