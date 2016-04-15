@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        //Если интернет во время запуска был выключен, а после того как свернули - развернули приложение включили
+        if (listView.getAdapter() == null)
+          new ParseTask().execute();
+    }
+
     private class ParseTask extends AsyncTask<Void, Void, String> {
 
         HttpURLConnection connection = null;
