@@ -25,6 +25,7 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected Bitmap doInBackground(String... params) {
+        //Подгружаем картинку с сервера и засовываем в кэш, если её там не нашли
         String url = params[0];
         Bitmap image = mCache.get(url);
         if (image == null) {
@@ -34,6 +35,7 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
                 mCache.put(url, image);
                 Log.d("cache", "cached");
             } catch (Exception e) {
+                //При ошибке ставим картинку по умолчанию
                 Log.d("cache","not cached");
                 image = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.artist_unknown);
                 e.printStackTrace();

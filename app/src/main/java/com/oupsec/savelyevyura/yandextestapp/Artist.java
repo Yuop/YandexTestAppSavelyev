@@ -33,7 +33,7 @@ public class Artist {
         this.description = description;
     }
 
-
+    //Разбираем JSON
     public static Artist getJSON(final JSONObject object) throws JSONException {
         final int id = object.optInt("id");
         final String name = object.optString("name");
@@ -63,7 +63,7 @@ public class Artist {
 
         return artist;
     }
-
+    //Инициализируем массив JSON
     public static ArrayList<Artist> arrayFromJson(final JSONArray array) {
         final ArrayList<Artist> artists = new ArrayList<>();
         Log.d("ARRAY_SIZE", String.format("%d",array.length()));

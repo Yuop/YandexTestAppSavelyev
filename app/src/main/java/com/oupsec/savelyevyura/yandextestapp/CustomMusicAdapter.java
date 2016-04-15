@@ -65,6 +65,7 @@ public class CustomMusicAdapter extends BaseAdapter {
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewHolder holder;
         if (convertView == null) {
+            //Инициализируем UI элементы
             convertView = inflater.inflate(R.layout.list_artist_row, parent, false);
             holder = new ViewHolder();
             holder.artistName = (TextView) convertView.findViewById(R.id.artistText);
@@ -77,24 +78,24 @@ public class CustomMusicAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         final Artist item = artists.get(position);
-
+        //Задаем текст
         holder.artistName.setText(item.getName());
         holder.artistGenre.setText(item.getGenres());
         holder.artistSongs.setText(String.format("%d песен, %d альбомов", item.getTracks(), item.getAlbums()));
+        //Подгружаем портрет с помощью Picasso
         Picasso.with(convertView.getContext()).load(item.getSmallPic()).into(holder.artistPortret);
 
         final View finalConvertView = convertView;
-
+        //Выставляем событие на нажатие строки в listView
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(finalConvertView.getContext(), DescriptionActivity.class);
-
+                //Анимация
                 String transitionName = finalConvertView.getContext().getString(R.string.transition_artist);
-
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(finalConvertView, 0 , 0, finalConvertView.getWidth(), finalConvertView.getHeight());
 
-
+                //Пробрасываем некоторые элементы на DescriptionActivity
                 intent.putExtra("title", item.getName());
                 intent.putExtra("bigPic", item.getBigPic());
                 intent.putExtra("description", item.getDescription());
@@ -110,17 +111,6 @@ public class CustomMusicAdapter extends BaseAdapter {
 
         return convertView;
     }
-    private boolean hasImage(@NonNull ImageView view) {
-        Drawable drawable = view.getDrawable();
-        boolean hasImage = (drawable != null);
-
-        if (hasImage && (drawable instanceof BitmapDrawable)) {
-            hasImage = ((BitmapDrawable)drawable).getBitmap() != null;
-        }
-
-        return hasImage;
-    }
-
     class ViewHolder {
         TextView artistGenre, artistName, artistSongs;
         ImageView artistPortret;

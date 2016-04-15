@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... params) {
             try {
+                //Создаем соединение
                 URL url = new URL("http://cache-default06g.cdn.yandex.net/download.cdn.yandex.net/mobilization-2016/artists.json");
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 InputStream stream = connection.getInputStream();
                 StringBuilder buffer = new StringBuilder();
 
+                //Разбираем объект
                 reader = new BufferedReader(new InputStreamReader(stream));
 
                 String line;
@@ -70,17 +73,20 @@ public class MainActivity extends AppCompatActivity {
             Log.d("LOG", stringJSON);
 
             JSONArray dataJSONArray = null;
-
+            //Наполняем массив
             try {
                 dataJSONArray = new JSONArray(stringJSON);
 
 
                 artists = Artist.arrayFromJson(dataJSONArray);
+                //Устанавливаем адаптер для listView
                 listView.setAdapter(new CustomMusicAdapter(MainActivity.this, artists));
                 Log.d("SIZE", String.format("%d",artists.size()));
 
             } catch (Exception e) {
                 e.printStackTrace();
+                Toast.makeText(getApplicationContext(),"Данных не найдено.\nВы подключены к интернету?", Toast.LENGTH_LONG).show();
+
             }
 
             }

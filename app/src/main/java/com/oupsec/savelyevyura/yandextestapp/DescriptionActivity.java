@@ -15,7 +15,7 @@ public class DescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
-
+        //Получаем и устанавливаем заголовок
         String title = getIntent().getStringExtra("title");
 
         try {
@@ -26,7 +26,7 @@ public class DescriptionActivity extends AppCompatActivity {
         }
 
 
-
+        //Получаем, устанавливаем другие элементы
         String coverUrl = getIntent().getStringExtra("bigPic");
         String genres = getIntent().getStringExtra("genres");
         String description = getIntent().getStringExtra("description");
@@ -50,6 +50,8 @@ public class DescriptionActivity extends AppCompatActivity {
 
     }
 
+
+    //Метод для определения окончания в слове
     public String declension(String w1, String w2, String w3, int num) {
 
         String declension = Integer.valueOf(num).toString();
